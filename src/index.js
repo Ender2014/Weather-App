@@ -1,4 +1,4 @@
 import "./styles.css";
-import { fetchWeather } from "./services/weather_api";
+import initEventlisteners from "./ui/events";
 
-fetchWeather("Moscow");
+initEventlisteners();

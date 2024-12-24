@@ -1,20 +1,16 @@
-// helper function to handle network error that doesn't use promise rejects.
-export function handleError(fn) {
-  return (...params) => fn(...params).catch(console.error);
-}
 // Get weather data
 export async function fetchWeather(location) {
   const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=UD9TAVWLH8YHYSE5DLVUGJXF7`;
-
   const response = await fetch(url, { mode: "cors" });
   if (!response) {
     throw new Error(`Response status ${response.status}`);
   }
   const responseData = await response.json();
-  console.log(responseData);
+  const weatherData = processData(responseData);
+  console.log(weatherData);
 }
-// Helper function to extract condition data
-export function processConditions({ currentConditions }) {
+
+export function processConditions(currentConditions) {
   const {
     datetimeEpoch,
     temp,
