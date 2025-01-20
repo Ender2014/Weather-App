@@ -2,3 +2,5 @@
 export default function handleError(fn) {
   return (...params) => fn(...params).catch(console.error);
 }
+
+// Form error validation
