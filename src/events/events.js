@@ -1,4 +1,4 @@
-import fetchWeather from "../services/weatherAPI";
+import fetchWeather from "../controllers/weatherController";
 import handleError from "../utils/errorHandling";
 
 const searchBtn = document.querySelector(".searchBtn");

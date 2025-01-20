@@ -1,4 +1,4 @@
-export default function convertUnits(value, fromUnit, toUnit) {
+export function convertUnits(value, fromUnit, toUnit) {
   const myValue = value;
   const conversions = {
     // Length conversions
@@ -30,4 +30,12 @@ export default function convertUnits(value, fromUnit, toUnit) {
   throw new Error(
     `Conversion from '${fromUnit}' to '${toUnit}' is not supported.`,
   );
+}
+
+export function extractDateTime(datetimeEpoch) {
+  const myDate = new Date(datetimeEpoch);
+  const time = `${myDate.getHours()}:${myDate.getMinutes()}:${myDate.getSeconds()}`;
+  const date = `${myDate.getFullYear()}/${myDate.getMonth() + 1}/${myDate.getDate()}`;
+  console.log(`EpochTime:${datetimeEpoch} --> Date:${date} ; Time:${time}`);
+  return { time, date };
 }
