@@ -1,3 +1,5 @@
+const { fromUnixTime } = require("date-fns");
+
 export function convertUnits(value, fromUnit, toUnit) {
   const myValue = value;
   const conversions = {
@@ -24,7 +26,7 @@ export function convertUnits(value, fromUnit, toUnit) {
 
   if (conversions[key]) {
     const convertedValue = conversions[key](myValue);
-    console.log(`${fromUnit}:${myValue} --> ${toUnit}:${myValue}}`);
+    // console.log(`${fromUnit}:${myValue} --> ${toUnit}:${myValue}}`);
     return convertedValue;
   }
   throw new Error(
@@ -33,9 +35,10 @@ export function convertUnits(value, fromUnit, toUnit) {
 }
 
 export function extractDateTime(datetimeEpoch) {
-  const myDate = new Date(datetimeEpoch);
+  const myDate = fromUnixTime(datetimeEpoch);
   const time = `${myDate.getHours()}:${myDate.getMinutes()}:${myDate.getSeconds()}`;
   const date = `${myDate.getFullYear()}/${myDate.getMonth() + 1}/${myDate.getDate()}`;
-  console.log(`EpochTime:${datetimeEpoch} --> Date:${date} ; Time:${time}`);
+  // console.log(`EpochTime:${datetimeEpoch} --> Date:${date} ; Time:${time}`);
+
   return { time, date };
 }

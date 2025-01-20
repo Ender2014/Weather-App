@@ -1,11 +1,10 @@
-import { extractDateTime, convertUnits } from "../utils/conversionHelpers";
-
-let isMetric = true;
+import { extractDateTime } from "../utils/conversionHelpers";
 
 // Helper Function: Reformat and process data
 function processConditions(currentConditions) {
   // Extract wanted data
   const {
+    datetime,
     datetimeEpoch,
     temp,
     feelslike,
@@ -16,15 +15,12 @@ function processConditions(currentConditions) {
     icon,
     condition,
   } = currentConditions;
-
   // Data processing logic
-  const { time, date } = extractDateTime(datetimeEpoch);
-  if (isMetric) {
-  }
+  const { date } = extractDateTime(datetimeEpoch);
 
   return {
     date,
-    time,
+    datetime,
     temp,
     feelslike,
     preciprob,
@@ -47,13 +43,12 @@ function extractData(responseData) {
 }
 // Entry Point for module: Get weather data
 export default async function fetchWeather(location) {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=UD9TAVWLH8YHYSE5DLVUGJXF7`;
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=UD9TAVWLH8YHYSE5DLVUGJXF7`;
   const response = await fetch(url, { mode: "cors" });
   if (!response) {
     throw new Error(`Response status ${response.status}`);
   }
   const responseData = await response.json();
-
   const cleanData = extractData(responseData);
   console.log(cleanData);
   return cleanData;
