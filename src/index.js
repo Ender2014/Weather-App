@@ -1,4 +1,4 @@
 import "./styles.css";
-import initEventlisteners from "./ui/events";
+import initEventlisteners from "./events/events";
 
 initEventlisteners();

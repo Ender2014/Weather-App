@@ -6,8 +6,31 @@
     <title>Weather-App</title>
   </head>
   <body>
-    <label for="searchBar">location:</label>
-    <input type="text" id="searchbar" name="searchbar" required />
+    <div class="left-body column">
+      <div class="header">
+        <label for="searchBar">location:</label>
+        <input
+          type="text"
+          id="searchbar"
+          name="searchbar"
+          placeholder="Search for cities"
+          required
+        />
+      </div>
+    </div>
+    <div class="hero">
+      <div class="left-hero column">
+        <h2 id="city"></h2>
+        <p id="description"></p>
+        <h1 id="current"></h1>
+      </div>
+      <div class="right-hero column"></div>
+    </div>
+    <div class="forecast"></div>
+    <div class="air-conditiions"></div>
+
+    <div class="right-column"></div>
+
     <button type="button" class="submitBtn searchBtn">search</button>
   </body>
 </html>
