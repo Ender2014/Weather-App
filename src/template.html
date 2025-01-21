@@ -16,29 +16,42 @@
           placeholder="Search for cities"
           required
         />
+        <button type="button" class="submitBtn searchBtn">search</button>
       </div>
       <div class="hero">
         <div class="left-hero column">
-          <h2 class="city"></h2>
-          <p class="description"></p>
+          <div>
+            <h2 class="city"></h2>
+            <p class="description"></p>
+          </div>
           <h1 class="currentTemp"></h1>
         </div>
         <div class="right-hero column"></div>
       </div>
       <div class="forecast"><h3>TODAY's FORECAST</h3></div>
-      <div class="airConditiions">WEATHER DETAILS</div>
-    </div>
+      <div class="airConditiions">
+        <h3>WEATHER DETAILS</h3>
+        <div class="conditions">
+          <div class="con" id="Cloudy">
+            <p>Cloudy</p>
+            <div></div>
+          </div>
+          <div class="con" id="Humidity">
+            <p>Humidity</p>
+            <div></div>
+          </div>
+          <div class="con" id="Wind">
+            <p>Wind</p>
+          </div>
+          <div class="con" id="Rain">
+            <p>Rain</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="rightColumn">
-      <h3>7-DAY FORECAST</h3>
-      <div class="conditions">
-        <div class="con" id="Cloudy"></div>
-        <div class="con" id="Humidity"></div>
-        <div class="con" id="Wind"></div>
-        <div class="con" id="Rain"></div>
+      <div class="rightColumn">
+        <h3>7-DAY FORECAST</h3>
       </div>
     </div>
-
-    <button type="button" class="submitBtn searchBtn">search</button>
   </body>
 </html>

@@ -13,7 +13,7 @@ function processConditions(currentConditions) {
     windspeed,
     uvindex,
     icon,
-    condition,
+    conditions,
   } = currentConditions;
   // Data processing logic
   const { date } = extractDateTime(datetimeEpoch);
@@ -28,18 +28,18 @@ function processConditions(currentConditions) {
     windspeed,
     uvindex,
     icon,
-    condition,
+    conditions,
   };
 }
 
 // Extract wanted weather data
 function extractData(responseData) {
-  const { resolvedAddress, description, currentConditions, days } =
+  const { address, resolvedAddress, description, currentConditions, days } =
     responseData;
   const condition = processConditions(currentConditions);
   const forecast = days.map((day) => processConditions(day));
 
-  return { resolvedAddress, description, condition, forecast };
+  return { address, resolvedAddress, description, ...condition, forecast };
 }
 // Entry Point for module: Get weather data
 export default async function fetchWeather(location) {
@@ -49,7 +49,7 @@ export default async function fetchWeather(location) {
     throw new Error(`Response status ${response.status}`);
   }
   const responseData = await response.json();
-  const cleanData = extractData(responseData);
-  console.log(cleanData);
-  return cleanData;
+  const dataObj = extractData(responseData);
+  console.log(dataObj);
+  return dataObj;
 }
