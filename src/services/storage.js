@@ -7,7 +7,19 @@ export function populateStorage(name, item) {
 }
 
 export function fetchFromStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  let value = localStorage.getItem(key);
+  if (value === null) {
+    console.log("Key does not exist in localStorage");
+  } else {
+    try {
+      value = JSON.parse(value);
+      console.log("Parsed Value:", value);
+    } catch (error) {
+      console.log("Invalid JSON:", error);
+    }
+  }
+
+  return value;
 }
 
 export function storageAvailable(type) {

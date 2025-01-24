@@ -36,8 +36,9 @@ export default function initEventlisteners() {
 
   // Current location
   let location = "Kuala Lumpur";
-  if (storageAvailable || fetchFromStorage("location"))
+  if (storageAvailable || fetchFromStorage("location") !== null) {
     location = fetchFromStorage("location");
+  }
 
   window.onload = async function () {
     const dataObj = await handleError(fetchWeather)(location);
