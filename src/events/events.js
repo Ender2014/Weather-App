@@ -55,10 +55,10 @@ export default function initEventlisteners() {
     populateStorage("location", location);
   });
 
-  // load data every 10 seconds
+  /* // load data every 10 seconds
   setInterval(async () => {
     const dataObj = await handleError(fetchWeather)(location);
     updatePage(domElements, dataObj);
     populateStorage("location", location);
-  }, 10000);
+  }, 10000); */
 }
