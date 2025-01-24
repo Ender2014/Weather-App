@@ -1,7 +1,7 @@
+import { extractHourlyData } from "../controllers/weatherController";
 import fetchImages from "../utils/imageHandling";
-import { date2day, isToday } from "../utils/conversionHelpers";
 
-export default class ForecastUI {
+export default class TodayForecastUI {
   constructor(container) {
     this.container = container;
   }
@@ -9,19 +9,18 @@ export default class ForecastUI {
   createDOM() {
     const containerDOM = document.createElement("div");
 
-    const dayDOM = document.createElement("p");
-    containerDOM.appendChild(dayDOM);
+    const timeDOM = document.createElement("p");
+    containerDOM.appendChild(timeDOM);
 
     const iconDOM = document.createElement("img");
     containerDOM.appendChild(iconDOM);
 
-    const tempDOM = document.createElement("span");
+    const tempDOM = document.createElement("div");
     tempDOM.classList.add("value");
     containerDOM.appendChild(tempDOM);
 
     this.container.appendChild(containerDOM);
-
-    return { dayDOM, iconDOM, tempDOM };
+    return { timeDOM, iconDOM, tempDOM };
   }
 
   removeDisplay() {
@@ -37,20 +36,16 @@ export default class ForecastUI {
     }
     // Reset the display first
     this.removeDisplay();
-    const { forecast } = dataObj;
+    // Get every three hours
+    const nHoursdata = extractHourlyData(dataObj, 3);
 
-    forecast.slice(0, 7).forEach((item) => {
+    nHoursdata.forEach((item) => {
       // Fetch wanted API data
-      const { date, icon, temp } = item;
+      const { datetime, icon, temp } = item;
       // Create new DOM objects
-      const { dayDOM, iconDOM, tempDOM } = this.createDOM();
+      const { timeDOM, iconDOM, tempDOM } = this.createDOM();
       // Update content
-      if (isToday(date)) {
-        dayDOM.textContent = "Today";
-      } else {
-        dayDOM.textContent = date2day(date);
-      }
-
+      timeDOM.textContent = datetime;
       iconDOM.src = fetchImages(icon, "svg");
       tempDOM.textContent = temp;
     });

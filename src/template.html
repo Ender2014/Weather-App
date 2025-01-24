@@ -6,51 +6,47 @@
     <title>Weather-App</title>
   </head>
   <body>
-    <div class="left-body column">
-      <div class="header">
-        <label for="searchBar">location:</label>
-        <input
-          type="text"
-          id="searchbar"
-          name="searchbar"
-          placeholder="Search for cities"
-          required
-        />
-        <button type="button" class="submitBtn searchBtn">search</button>
+    <div class="main">
+      <div class="sidebar section">
+        <img src="assets/images/settings.svg" />
       </div>
-      <div class="hero">
-        <div class="left-hero column">
+      <div class="left-body column">
+        <div class="header">
           <div>
-            <h2 class="city"></h2>
-            <p class="description"></p>
+            <input
+              type="text"
+              id="searchbar"
+              name="searchbar"
+              placeholder="Search for cities"
+              required
+            />
+            <button type="button" class="submitBtn searchBtn">search</button>
           </div>
-          <h1 class="currentTemp"></h1>
+          <p class="error"></p>
         </div>
-        <div class="right-hero column"></div>
-      </div>
-      <div class="forecast"><h3>TODAY's FORECAST</h3></div>
-      <div class="airConditiions">
-        <h3>WEATHER DETAILS</h3>
-        <div class="conditions">
-          <div class="con" id="Cloudy">
-            <p>Cloudy</p>
-            <div></div>
+
+        <div class="hero section head">
+          <div class="lol"></div>
+        </div>
+
+        <div class="tdy-forecast section">
+          <div class="nested">
+            <h3>TODAY'S FORECAST</h3>
+            <div class="content stats"></div>
           </div>
-          <div class="con" id="Humidity">
-            <p>Humidity</p>
-            <div></div>
-          </div>
-          <div class="con" id="Wind">
-            <p>Wind</p>
-          </div>
-          <div class="con" id="Rain">
-            <p>Rain</p>
+        </div>
+
+        <div class="weather-Details section">
+          <div class="nested">
+            <h3>WEATHER DETAILS</h3>
+            <div class="conditions stats"></div>
           </div>
         </div>
       </div>
 
-      <div class="rightColumn">
+      <div class="rightColumn section">
         <h3>7-DAY FORECAST</h3>
+        <div class="forecast"></div>
       </div>
     </div>
   </body>

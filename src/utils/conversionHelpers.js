@@ -42,3 +42,34 @@ export function extractDateTime(datetimeEpoch) {
 
   return { time, date };
 }
+
+export function date2day(dateString) {
+  // Create a Date object
+  const date = new Date(dateString);
+
+  // Array of day names
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  // Get the day of the week as a number (0-6)
+  const dayNumber = date.getDay();
+  // Get the day name from the array
+  const dayName = daysOfWeek[dayNumber];
+  return dayName;
+}
+
+export function isToday(dateString) {
+  const date = new Date(dateString);
+  const today = new Date(); // Get today's date
+  return (
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
+  );
+}
